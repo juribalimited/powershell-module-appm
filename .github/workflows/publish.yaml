@@ -4,10 +4,14 @@ on:
   push:
     branches:
       - main
+    paths:
+      - 'Juriba.AppM/**'
   pull_request:
     types: [opened, synchronize, reopened, closed]
     branches:
       - main
+    paths:
+      - 'Juriba.AppM/**'
 
 jobs:
   deploy:
