@@ -30,7 +30,8 @@
     Copyright         = '(c) Juriba. All rights reserved.'
 
     # Description of the functionality provided by this module
-    Description       = 'PowerShell Module to interact with Juriba AppM.'
+    # Description       = 'PowerShell Module to interact with Juriba AppM.'
+    Description = 'This module is currently under active development and is not intended for public use.'
 
     # Minimum version of the PowerShell engine required by this module
     # PowerShellVersion = ''
