@@ -12,7 +12,7 @@
     RootModule        = 'Juriba.AppM.psm1'
 
     # Version number of this module.
-    ModuleVersion     = '0.0.4'
+    ModuleVersion     = '0.0.5'
 
     # Supported PSEditions
     # CompatiblePSEditions = @()
@@ -70,16 +70,16 @@
     # NestedModules = @()
 
     # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
-    FunctionsToExport = '*'
+    FunctionsToExport = @("Get-GenericIntegrations", "Get-IntegrationPublishings", "Get-PublishingPrerequisites", "Get-PublishingProperties", "Get-PublishingSource", "Get-ApplicationPackageDetails", "Add-PublishingLog", "Update-PublishingState")
 
     # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
-    CmdletsToExport   = '*'
+    # CmdletsToExport   = '*'
 
     # Variables to export from this module
-    VariablesToExport = '*'
+    # VariablesToExport = '*'
 
     # Aliases to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no aliases to export.
-    AliasesToExport   = '*'
+    # AliasesToExport   = '*'
 
     # DSC resources to export from this module
     # DscResourcesToExport = @()
