@@ -21,21 +21,21 @@
         [Parameter(Mandatory = $true)]
         [string]$SourcePath
     )
-	
-	$TempName = New-Guid
-	$OutFile = Join-Path $SourcePath -ChildPath $TempName
-	
-	try {
-		$Source = Invoke-WebRequest -Uri ("https://" + $Instance + ":443/" + $PublishingSourceUrl) -Headers @{"x-api-key"=$Authorization;} -OutFile $OutFile -PassThru
-		
-		$Content = [System.Net.Mime.ContentDisposition]::new($Source.Headers['Content-Disposition'])
-		
-		Rename-Item $OutFile $OutFile.Replace($TempName, $Content.FileName)
-	}
+
+    $TempName = New-Guid
+    $OutFile = Join-Path $SourcePath -ChildPath $TempName
+    
+    try {
+        $Source = Invoke-WebRequest -Uri ("https://" + $Instance + ":443/" + $PublishingSourceUrl) -Headers @{"x-api-key"=$Authorization;} -OutFile $OutFile -PassThru
+    
+        $Content = [System.Net.Mime.ContentDisposition]::new($Source.Headers['Content-Disposition'])
+    
+        Rename-Item $OutFile $OutFile.Replace($TempName, $Content.FileName)
+    }
     catch {
         Write-Error $_.Exception.Message
         break
     }
-	
-	$Content.FileName
+
+    $Content.FileName
 }
