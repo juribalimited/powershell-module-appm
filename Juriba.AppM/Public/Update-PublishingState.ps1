@@ -9,7 +9,7 @@
       Updates state of the publishing with identifier equal to 2 that is executing to the integration with identifier equal to 1.
     #>
 
-    [CmdletBinding()]
+    [CmdletBinding(SupportsShouldProcess)]
     param (
 
         [Parameter(Mandatory = $true)]
@@ -32,14 +32,17 @@
     $StateBody = @{
             "publishedAppId" = $PublishedAppId;
             "publishingState" = $PublishingState
-            "publishedApplicationVersion" = $PublishingApplicationVersion;
+            "publishedApplicationVersion" = $PublishedApplicationVersion;
     } | ConvertTo-Json
     
-    try {
-        Invoke-WebRequest -Uri ("https://" + $Instance + ":443/api/v1/integration/generic/$($IntegrationId)/published-app/$($PublishingId)") -Method PUT -Body $StateBody -ContentType application/json -Headers @{"x-api-key"=$Authorization;}
-    }
-    catch {
-        Write-Error $_.Exception.Message
-        break
+    if($PSCmdlet.ShouldProcess($StateBody))
+    {
+        try {
+            Invoke-WebRequest -Uri ("https://" + $Instance + ":443/api/v1/integration/generic/$($IntegrationId)/published-app/$($PublishingId)") -Method PUT -Body $StateBody -ContentType application/json -Headers @{"x-api-key"=$Authorization;}
+        }
+        catch {
+            Write-Error $_.Exception.Message
+            break
+        }
     }
 }
