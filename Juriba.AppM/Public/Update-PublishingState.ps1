@@ -34,7 +34,7 @@
             "publishingState" = $PublishingState
             "publishedApplicationVersion" = $PublishedApplicationVersion;
     } | ConvertTo-Json
-    
+
     if($PSCmdlet.ShouldProcess($StateBody))
     {
         try {
