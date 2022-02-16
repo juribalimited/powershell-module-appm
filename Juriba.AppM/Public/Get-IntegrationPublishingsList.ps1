@@ -24,7 +24,7 @@
         [string]$PackageTypes
     )
 
-    $Uri = "https://" + $Instance + ":443/api/v1/integration/generic/$($IntegrationId)/published-app?"
+    $Uri = "https://" + $Instance + "/api/v1/integration/generic/$($IntegrationId)/published-app?"
 
     if ($Limit -ne 0) {
         $Uri = $Uri + "limit=$($Limit)&"
@@ -35,7 +35,7 @@
     }
 
     try {
-        $Publishings = Invoke-RestMethod -Uri $Uri -Headers @{"x-api-key"=$Authorization;}
+        $Publishings = Invoke-WebRequest -Uri $Uri -Headers @{"x-api-key"=$Authorization;}
     }
     catch {
         Write-Error $_.Exception.Message

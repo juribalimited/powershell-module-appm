@@ -42,7 +42,7 @@
         } |ConvertTo-Json
 
         try {
-                Invoke-WebRequest -Uri ("https://" + $Instance + ":443/api/v1/integration/generic/$($IntegrationId)/published-app/$($PublishingId)/logs") -Method POST -Body $LogBody -ContentType application/json -Headers @{"x-api-key"=$Authorization;}
+                Invoke-WebRequest -Uri ("https://" + $Instance + "/api/v1/integration/generic/$($IntegrationId)/published-app/$($PublishingId)/logs") -Method POST -Body $LogBody -ContentType application/json -Headers @{"x-api-key"=$Authorization;}
         }
     catch {
         Write-Error $_.Exception.Message

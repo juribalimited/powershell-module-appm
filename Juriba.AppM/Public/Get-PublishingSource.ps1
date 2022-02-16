@@ -26,7 +26,7 @@
     $OutFile = Join-Path $SourcePath -ChildPath $TempName
 
     try {
-        $Source = Invoke-WebRequest -Uri ("https://" + $Instance + ":443/" + $PublishingSourceUrl) -Headers @{"x-api-key"=$Authorization;} -OutFile $OutFile -PassThru
+        $Source = Invoke-WebRequest -Uri ("https://" + $Instance + "/" + $PublishingSourceUrl) -Headers @{"x-api-key"=$Authorization;} -OutFile $OutFile -PassThru
 
         $Content = [System.Net.Mime.ContentDisposition]::new($Source.Headers['Content-Disposition'])
 

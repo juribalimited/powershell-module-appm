@@ -23,7 +23,7 @@
     )
 
     try {
-        $Prerequisites = Invoke-RestMethod -Uri ("https://" + $Instance + ":443/api/v1/integration/generic/$($IntegrationId)/published-app/$($PublishingId)/prerequisites") -Headers @{"x-api-key"=$Authorization;}
+        $Prerequisites = Invoke-WebRequest -Uri ("https://" + $Instance + "/api/v1/integration/generic/$($IntegrationId)/published-app/$($PublishingId)/prerequisites") -Headers @{"x-api-key"=$Authorization;}
     }
     catch {
         Write-Error $_.Exception.Message

@@ -21,7 +21,7 @@
     )
 
     try {
-        $Details = Invoke-RestMethod -Uri ("https://" + $Instance + ":443/" + $ApplicationPackageDetailsUrl) -Headers @{"x-api-key"=$Authorization;}
+        $Details = Invoke-WebRequest -Uri ("https://" + $Instance + "/" + $ApplicationPackageDetailsUrl) -Headers @{"x-api-key"=$Authorization;}
     }
     catch {
         Write-Error $_.Exception.Message

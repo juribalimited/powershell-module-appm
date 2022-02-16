@@ -38,7 +38,7 @@
     if($PSCmdlet.ShouldProcess($StateBody))
     {
         try {
-            Invoke-WebRequest -Uri ("https://" + $Instance + ":443/api/v1/integration/generic/$($IntegrationId)/published-app/$($PublishingId)") -Method PUT -Body $StateBody -ContentType application/json -Headers @{"x-api-key"=$Authorization;}
+            Invoke-WebRequest -Uri ("https://" + $Instance + "/api/v1/integration/generic/$($IntegrationId)/published-app/$($PublishingId)") -Method PUT -Body $StateBody -ContentType application/json -Headers @{"x-api-key"=$Authorization;}
         }
         catch {
             Write-Error $_.Exception.Message
