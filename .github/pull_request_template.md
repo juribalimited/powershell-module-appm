@@ -1,4 +1,4 @@
-> We are allowing contributions for now with limited review whilst we investigate how we can ensure a common approach (and other common practices/recommendations) prior to promoting these modules to our customers.
+> We are allowing contributions for now with limited review whilst we learn what common practices, approach and recommendations we can follow prior to promoting these modules to our customers.
 
 ### Manual Tasks Checklist
 - [ ] Increment module version number in /Juriba.AppM/Juriba.AppM.psd1
