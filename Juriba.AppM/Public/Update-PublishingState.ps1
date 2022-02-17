@@ -5,7 +5,7 @@
       .DESCRIPTION
       The function updates state of the publishing is executing to a specific generic integration.
       .EXAMPLE
-      Update-PublishingState -Authorization "GdyisqPgfd+KqJp6nS3PV3gggM+dh57jHWctzAzj/nDfxWZ7+g0CnvA==" -Instance "appm.demo.juriba.com" -IntegrationId 1 -PublishingId 2 -PublishingState "Succeeded" -PublishedAppId "1" -PublishedApplicationVersion "1.0"
+      Update-PublishingState -APIKey "GdyisqPgfd+KqJp6nS3PV3gggM+dh57jHWctzAzj/nDfxWZ7+g0CnvA==" -Instance "appm.demo.juriba.com" -IntegrationId 1 -PublishingId 2 -PublishingState "Succeeded" -PublishedAppId "1" -PublishedApplicationVersion "1.0"
       Updates state of the publishing with identifier equal to 2 that is executing to the integration with identifier equal to 1.
     #>
 
@@ -13,9 +13,11 @@
     param (
 
         [Parameter(Mandatory = $true)]
-        [string]$Authorization,
-        [Parameter(Mandatory = $true)]
         [string]$Instance,
+        [Parameter(Mandatory=$false)]
+        [int]$Port = 443,
+        [Parameter(Mandatory = $true)]
+        [string]$APIKey,
         [Parameter(Mandatory = $true)]
         [int]$IntegrationId,
         [Parameter(Mandatory = $true)]
@@ -35,10 +37,12 @@
             "publishedApplicationVersion" = $PublishedApplicationVersion;
     } | ConvertTo-Json
 
-    if($PSCmdlet.ShouldProcess($StateBody))
+    $Target = "App ID: {0}, Version: {1}" -f $PublishedAppId, $PublishedApplicationVersion
+
+    if($PSCmdlet.ShouldProcess($Target))
     {
         try {
-            Invoke-WebRequest -Uri ("https://" + $Instance + "/api/v1/integration/generic/$($IntegrationId)/published-app/$($PublishingId)") -Method PUT -Body $StateBody -ContentType application/json -Headers @{"x-api-key"=$Authorization;}
+            Invoke-WebRequest -Uri ("https://" + $Instance + ":$($Port)/api/v1/integration/generic/$($IntegrationId)/published-app/$($PublishingId)") -Method PUT -Body $StateBody -ContentType application/json -Headers @{"x-api-key"=$APIKey;}
         }
         catch {
             Write-Error $_.Exception.Message

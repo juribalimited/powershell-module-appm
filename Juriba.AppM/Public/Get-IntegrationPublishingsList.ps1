@@ -5,7 +5,7 @@
       .DESCRIPTION
       The function retrieves a collection of publishing identifiers created for a specific generic integration.
       .EXAMPLE
-      Get-IntegrationPublishingsList -Authorization "GdyisqPgfd+KqJp6nS3PV3gggM+dh57jHWctzAzj/nDfxWZ7+g0CnvA==" -Instance "appm.demo.juriba.com" -IntegrationId 1 -Limit 10 -PackageTypes "Msi,AppV"
+      Get-IntegrationPublishingsList -APIKey "GdyisqPgfd+KqJp6nS3PV3gggM+dh57jHWctzAzj/nDfxWZ7+g0CnvA==" -Instance "appm.demo.juriba.com" -IntegrationId 1 -Limit 10 -PackageTypes "Msi,AppV"
       Retrieves a collection of last 10 created MSI and App-V publishing identifiers for the generic integration with identifier equal to 1.
     #>
 
@@ -13,9 +13,11 @@
     param (
 
         [Parameter(Mandatory = $true)]
-        [string]$Authorization,
-        [Parameter(Mandatory = $true)]
         [string]$Instance,
+        [Parameter(Mandatory=$false)]
+        [int]$Port = 443,
+        [Parameter(Mandatory = $true)]
+        [string]$APIKey,
         [Parameter(Mandatory = $true)]
         [int]$IntegrationId,
         [Parameter(Mandatory = $false)]
@@ -24,7 +26,7 @@
         [string]$PackageTypes
     )
 
-    $Uri = "https://" + $Instance + "/api/v1/integration/generic/$($IntegrationId)/published-app?"
+    $Uri = "https://" + $Instance + ":$($Port)/api/v1/integration/generic/$($IntegrationId)/published-app?"
 
     if ($Limit -ne 0) {
         $Uri = $Uri + "limit=$($Limit)&"
@@ -35,12 +37,12 @@
     }
 
     try {
-        $Publishings = Invoke-WebRequest -Uri $Uri -Headers @{"x-api-key"=$Authorization;}
+        $Publishings = Invoke-WebRequest -Uri $Uri -Headers @{"x-api-key"=$APIKey;}
     }
     catch {
         Write-Error $_.Exception.Message
         break
     }
 
-    $Publishings
+    $Publishings.Content | ConvertFrom-Json
 }

@@ -5,7 +5,7 @@
       .DESCRIPTION
       The function retrieves a collection of AppM generic integrations.
       .EXAMPLE
-      Get-GenericIntegrationsList -Authorization "GdyisqPgfd+KqJp6nS3PV3gggM+dh57jHWctzAzj/nDfxWZ7+g0CnvA==" -Instance "appm.demo.juriba.com"
+      Get-GenericIntegrationsList -APIKey "GdyisqPgfd+KqJp6nS3PV3gggM+dh57jHWctzAzj/nDfxWZ7+g0CnvA==" -Instance "appm.demo.juriba.com"
       Retrieves a collection of genereic integrations located on the demo instance of AppM.
     #>
 
@@ -13,18 +13,20 @@
     param (
 
         [Parameter(Mandatory = $true)]
-        [string]$Authorization,
+        [string]$Instance,
+        [Parameter(Mandatory=$false)]
+        [int]$Port = 443,
         [Parameter(Mandatory = $true)]
-        [string]$Instance
+        [string]$APIKey
     )
 
     try {
-        $Intergrations = Invoke-WebRequest -Uri ("https://" + $Instance + "/api/v1/integration/generic") -Headers @{"x-api-key"=$Authorization;}
+        $Intergrations = Invoke-WebRequest -Uri ("https://" + $Instance + ":$($Port)/api/v1/integration/generic") -Headers @{"x-api-key"=$APIKey;}
     }
     catch {
         Write-Error $_.Exception.Message
         break
     }
 
-    $Intergrations
+    $Intergrations.Content | ConvertFrom-Json
 }
