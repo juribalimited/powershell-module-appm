@@ -5,7 +5,7 @@
       .DESCRIPTION
       The function retrieves an publishing package source chosen for a specific integration.
       .EXAMPLE
-      Get-PublishingSource -APIKey "GdyisqPgfd+KqJp6nS3PV3gggM+dh57jHWctzAzj/nDfxWZ7+g0CnvA==" -Instance "appm.demo.juriba.com" -PublishingSourceUrl "api/v1/integration/generic/1/published-app/2/source" -SourcePath "C:\"
+      Get-PublishingSource -Instance "appm.demo.juriba.com" -Port 443 -APIKey "GdyisqPgfd+KqJp6nS3PV3gggM+dh57jHWctzAzj/nDfxWZ7+g0CnvA==" -PublishingSourceUrl "api/v1/integration/generic/1/published-app/2/source" -SourcePath "C:\"
       Retrieves package source for the publishing with identifier equal to 2 to the integration with identifier equal to 1. The result will be saved to SourcePath.
     #>
 

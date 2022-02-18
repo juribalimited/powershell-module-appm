@@ -5,7 +5,7 @@
       .DESCRIPTION
       The function retrieves a collection of publishing identifiers created for a specific generic integration.
       .EXAMPLE
-      Get-IntegrationPublishingsList -APIKey "GdyisqPgfd+KqJp6nS3PV3gggM+dh57jHWctzAzj/nDfxWZ7+g0CnvA==" -Instance "appm.demo.juriba.com" -IntegrationId 1 -Limit 10 -PackageTypes "Msi,AppV"
+      Get-IntegrationPublishingsList -Instance "appm.demo.juriba.com" -Port 443 -APIKey "GdyisqPgfd+KqJp6nS3PV3gggM+dh57jHWctzAzj/nDfxWZ7+g0CnvA==" -IntegrationId 1 -Limit 10 -PackageTypes "Msi,AppV"
       Retrieves a collection of last 10 created MSI and App-V publishing identifiers for the generic integration with identifier equal to 1.
     #>
 

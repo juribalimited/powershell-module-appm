@@ -5,7 +5,7 @@
       .DESCRIPTION
       The function retrieves an information about last application package version.
       .EXAMPLE
-      Get-ApplicationPackageInformation -APIKey "GdyisqPgfd+KqJp6nS3PV3gggM+dh57jHWctzAzj/nDfxWZ7+g0CnvA==" -Instance "appm.demo.juriba.com" -ApplicationPackageDetailsUrl "api/v1/application/1/package/Msi"
+      Get-ApplicationPackageInformation -Instance "appm.demo.juriba.com" -Port 443 -APIKey "GdyisqPgfd+KqJp6nS3PV3gggM+dh57jHWctzAzj/nDfxWZ7+g0CnvA==" -ApplicationPackageDetailsUrl "api/v1/application/1/package/Msi"
       Retrieves MSI package details for the application with identifier equal to 1.
     #>
 

@@ -5,7 +5,7 @@
       .DESCRIPTION
       The function retrieves a collection of AppM generic integrations.
       .EXAMPLE
-      Get-GenericIntegrationsList -APIKey "GdyisqPgfd+KqJp6nS3PV3gggM+dh57jHWctzAzj/nDfxWZ7+g0CnvA==" -Instance "appm.demo.juriba.com"
+      Get-GenericIntegrationsList -Instance "appm.demo.juriba.com" -Port 443 -APIKey "GdyisqPgfd+KqJp6nS3PV3gggM+dh57jHWctzAzj/nDfxWZ7+g0CnvA=="
       Retrieves a collection of genereic integrations located on the demo instance of AppM.
     #>
 

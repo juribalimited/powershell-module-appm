@@ -5,7 +5,7 @@
       .DESCRIPTION
       The function adds new log for the publishing is executing to a specific generic integration.
       .EXAMPLE
-      Add-PublishingLog -APIKey "GdyisqPgfd+KqJp6nS3PV3gggM+dh57jHWctzAzj/nDfxWZ7+g0CnvA==" -Instance "appm.demo.juriba.com" -IntegrationId 1 -PublishingId 2 -Message "New log" -Level "Information" -Date "02/23/2021 01:22" -PublishedAppId "1" -PublishedAppName "Application 1"
+      Add-PublishingLog -Instance "appm.demo.juriba.com" -Port 443 -APIKey "GdyisqPgfd+KqJp6nS3PV3gggM+dh57jHWctzAzj/nDfxWZ7+g0CnvA==" -IntegrationId 1 -PublishingId 2 -Message "New log" -Level "Information" -Date "02/23/2021 01:22" -PublishedAppId "1" -PublishedAppName "Application 1"
       Adds new log for the publishing with identifier equal to 2 that is executing to the integration with identifier equal to 1.
     #>
 
